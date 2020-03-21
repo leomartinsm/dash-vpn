@@ -1,0 +1,119 @@
+{% extends "template.html" %}
+
+{% block title %}Novo contato{% endblock %}
+
+{% block styles %}
+<style>
+    .card{
+        min-width: 331px;
+        min-height: 364px;
+    }
+
+    .chartjs-render-monitor{
+        min-width: 231px;
+        min-height: 264px;
+        max-width: 431px;
+        max-height: 464px;
+    }
+
+
+
+
+
+
+
+
+
+</style>
+{% endblock %}
+
+{% block script %}
+
+<script src="{{url_for('static', filename='js/external/chart.js')}}"></script>
+<script src="{{url_for('static', filename='js/external/chartjs-plugin-datalabels.js')}}"></script>
+<script src="{{ url_for('static', filename='js/firewall-grafico.js') }}"></script>
+<script>
+    {% for link in firewall.link %}
+        firewallgrafico('{{link}}');
+    {% endfor %}
+
+
+
+
+
+
+
+
+</script>
+{% endblock %}
+
+{% block conteudo %}
+
+<div class="container flex-shrink-0 mb-3">
+    <h4 class="font-weight-bold">CTO</h4>
+    <div class="row">
+        {% for link in firewall.link %}
+        {% if 'CTO' in link%}
+        <div class="card col-3 m-auto p-auto ">
+            <div class="row justify-content-center">
+                <h6 id="{{link}}Titulo"></h6>
+            </div>
+            <div class="row h-100 w-100 p-0 m-0">
+                <canvas id="{{link}}" class="h-100 w-100"></canvas>
+            </div>
+            <div class="row justify-content-center">
+                <h6 class="col-3 text-center font-weight-bold" id="{{link}}ControlPlane"></h6>
+                <h6 class="col-3 text-center font-weight-bold" id="{{link}}DataPlane"></h6>
+                <h6 class="col-3 text-center font-weight-bold" id="{{link}}Memoria"></h6>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+    </div>
+    <h4 class="font-weight-bold">MM1</h4>
+    <div class="row">
+        {% for link in firewall.link %}
+        {% if 'MM1' in link%}
+        <div class="card col-3 m-auto p-auto ">
+            <div class="row justify-content-center">
+                <h6 id="{{link}}Titulo"></h6>
+            </div>
+            <div class="row h-100 w-100 p-0 m-0">
+                <canvas id="{{link}}" class="h-100 w-100"></canvas>
+            </div>
+            <div class="row justify-content-center">
+                <h6 class="col-3 text-center font-weight-bold" id="{{link}}ControlPlane"></h6>
+                <h6 class="col-3 text-center font-weight-bold" id="{{link}}DataPlane"></h6>
+                <h6 class="col-3 text-center font-weight-bold" id="{{link}}Memoria"></h6>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+    </div>
+    <h4 class="font-weight-bold">MM2</h4>
+    <div class="row">
+        {% for link in firewall.link %}
+        {% if 'MM2' in link%}
+        <div class="card col-3 m-auto p-auto ">
+            <div class="row justify-content-center">
+                <h6 id="{{link}}Titulo"></h6>
+            </div>
+            <div class="row h-100 w-100 p-0 m-0">
+                <canvas id="{{link}}" class="h-100 w-100"></canvas>
+            </div>
+            <div class="row justify-content-center">
+                <h6 class="col-3 text-center font-weight-bold" id="{{link}}ControlPlane"></h6>
+                <h6 class="col-3 text-center font-weight-bold" id="{{link}}DataPlane"></h6>
+                <h6 class="col-3 text-center font-weight-bold" id="{{link}}Memoria"></h6>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+    </div>
+</div>
+
+
+{% endblock %}
